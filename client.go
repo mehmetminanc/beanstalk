@@ -138,6 +138,40 @@ func (client *Client) Reserve(timeout time.Duration) (*Job, error) {
 				job.TTR = time.Duration(ttr) * time.Second
 			}
 		}
+
+		if val, err := yamlValue(yaml, "tube"); err == nil {
+			job.Tube = val
+		}
+
+		if val, err := yamlValue(yaml, "reserves"); err == nil {
+			if reserves, err := strconv.Atoi(val); err == nil {
+				job.Reserves = uint32(reserves)
+			}
+		}
+
+		if val, err := yamlValue(yaml, "timeouts"); err == nil {
+			if timeouts, err := strconv.Atoi(val); err == nil {
+				job.Reserves = uint32(timeouts)
+			}
+		}
+
+		if val, err := yamlValue(yaml, "releases"); err == nil {
+			if releases, err := strconv.Atoi(val); err == nil {
+				job.Reserves = uint32(releases)
+			}
+		}
+
+		if val, err := yamlValue(yaml, "buries"); err == nil {
+			if buries, err := strconv.Atoi(val); err == nil {
+				job.Reserves = uint32(buries)
+			}
+		}
+
+		if val, err := yamlValue(yaml, "kicks"); err == nil {
+			if kicks, err := strconv.Atoi(val); err == nil {
+				job.Reserves = uint32(kicks)
+			}
+		}
 	}
 
 	job.touched()

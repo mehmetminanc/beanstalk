@@ -40,7 +40,14 @@ type Job struct {
 	Priority  uint32
 	TTR       time.Duration
 	touchedAt time.Time
-	commandC  chan<- *JobCommand
+	Tube      string
+	Reserves  uint32
+	Timeouts  uint32
+	Releases  uint32
+	Buries    uint32
+	Kicks     uint32
+
+	commandC chan<- *JobCommand
 	sync.Mutex
 }
 
