@@ -1,4 +1,4 @@
-module github.com/prep/beanstalk
+module github.com/mehmetminanc/beanstalk
 
 go 1.12
 
